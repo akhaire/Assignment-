@@ -1,0 +1,14 @@
+.close-button {
+    position: absolute;
+    top: -37px;
+    right: -12px;
+    background-color: transparent;
+    z-index: 9999;
+    color: white;
+  
+  }
+
+  .header{
+    color:white;
+   background-color: #b71d1d;
+  }

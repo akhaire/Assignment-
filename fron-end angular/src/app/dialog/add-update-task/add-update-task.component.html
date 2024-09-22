@@ -1,0 +1,88 @@
+<div id="dialog">
+    <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+        <mat-icon class="close-icon" color="warn">close</mat-icon>
+    </button>
+
+    <div mat-dialog-title class="header">
+        {{isEdit?"Edit":'New'}} Task
+    </div>
+    <hr class="my-0">
+    <mat-dialog-content class="pb-0">
+        <form [formGroup]="taskForm">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="user" class="form-label"> <span class="text-danger">*</span> Assigned To</label>
+                    <select id="user" class="form-select" name="user" formControlName="assignedTo">
+                        <option value="" disabled selected>Not selected</option>
+                        <option *ngFor="let user of users" [value]="user">{{ user }}</option>
+                    </select>
+                    <div *ngIf="isSubmitted && taskForm.controls['assignedTo']?.errors?.['required']">
+                        <div class="text-danger">
+                            This field required.
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="status" class="form-label"> <span class="text-danger">*</span> Status</label>
+                    <select id="status" class="form-select" name="status" formControlName="status">
+                        <option value="" disabled selected>Not selected</option>
+                        <option *ngFor="let status of statuses" [value]="status">{{ status }}</option>
+                    </select>
+                    <div *ngIf="isSubmitted && taskForm.controls['status']?.errors?.['required']">
+                        <div class="text-danger">
+                            This field required.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="date" class="form-label">Due Date</label>
+                    <mat-form-field id="datePicker" class="w-100">
+                        <input matInput [matDatepicker]="datepicker" placeholder="DD/MM/YYYY" formControlName="dueDate"
+                            (click)="datepicker.open()" readonly />
+                        <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+                        <mat-datepicker #datepicker>
+                        </mat-datepicker>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="priority" class="form-label"><span class="text-danger">*</span>Priority</label>
+                    <select id="priority" class="form-select" name="priority" formControlName="priority">
+                        <option value="" disabled selected>Not selected</option>
+                        <option *ngFor="let priority of priorities" [value]="priority">{{ priority }}</option>
+                    </select>
+                    <div *ngIf="isSubmitted && taskForm.controls['priority']?.errors?.['required']">
+                        <div class="text-danger">
+                            This field required.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea id="description" placeholder="Description" class="form-control" rows="3"
+                        name="description" formControlName="description"></textarea>
+                    <div *ngIf="isSubmitted && taskForm.controls['description']?.errors?.['maxlength']">
+                        <div class="text-danger">
+                            Maximum charector 50.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </mat-dialog-content>
+    <hr class="m-0">
+
+    <mat-dialog-actions align="end" class="pb-3 pt-2 actionFooter">
+        <div>
+            <div class="d-flex justify-content-end">
+                <button mat-stroked-button [mat-dialog-close]="true" class="bg-color-cancel">Cancel</button>
+                <button mat-stroked-button (click)="onSubmit()" class="bg-color">Save</button>
+            </div>
+        </div>
+    </mat-dialog-actions>
+
+</div>

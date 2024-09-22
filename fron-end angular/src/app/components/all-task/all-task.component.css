@@ -1,0 +1,92 @@
+.container{
+  /* top:10px; */
+  padding: 0px;
+}
+
+.innerDiv{
+    background-color: #ededed;
+    border: 1px solid gray;
+}
+
+.paginator{
+  background-color: #ededed;
+}
+
+
+.listIcon {
+    border-radius: 10px !important;
+}
+
+.table-container {
+    max-height: 400px; /* Adjust height as needed */
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: auto; /* Hide horizontal overflow */
+  }
+table {
+    width: 100%;
+}
+
+.edit {
+    height: 25px;
+    width: 25px;
+    background-color: gray;
+
+}
+
+.delete {
+    height: 25px;
+    width: 25px;
+    background-color: gray;
+
+}
+
+.edit:hover,
+.delete:hover {
+    background-color: rgb(201, 47, 47) !important;
+}
+
+
+::ng-deep #pagination .mat-mdc-paginator-page-size{
+  height: 30px;
+}
+::ng-deep #pagination .mat-mdc-paginator-page-size mat-form-field{
+  height: 30px;
+}
+::ng-deep #pagination .mat-mdc-form-field-type-mat-select:not(.mat-form-field-disabled) .mat-mdc-text-field-wrapper{
+    height: 1px;
+    background-color: white;
+}
+
+
+::ng-deep .mdc-text-field--outlined .mat-mdc-form-field-infix, .mdc-text-field--no-label .mat-mdc-form-field-infix{
+ padding-top:3px !important;
+}
+
+::ng-deep #pagination .mat-mdc-paginator-range-actions button{
+ background-color: white;
+ border-radius: 0;
+ border: 1px solid gray;
+ height: 30px;
+ display: flex;
+align-items: center;
+}
+
+.input-group-text {
+  background-color: white !important;
+  border-left: 0px;
+}
+
+.form-control:focus{
+  box-shadow: none;
+  outline: none;
+  border: 1px solid #ededed;
+}
+
+.refreshButton,.addButton{
+   border-radius: 0px;
+}
+
+.bg-white{
+  background-color: white;
+  height: 40px;
+}

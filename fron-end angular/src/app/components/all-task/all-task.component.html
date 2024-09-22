@@ -1,0 +1,133 @@
+<div class="container d-flex h-100 align-items-center">
+    <div class="innerDiv w-100">
+        <header>
+            <div class="row d-flex justify-content-between px-2 mt-1">
+                <div class="col">
+                    <span class="d-flex gap-2 justify-content-start">
+                        <button mat-fab class="listIcon" aria-label="Example icon button with a delete icon">
+                            <mat-icon>list</mat-icon>
+                        </button>
+                        <div class="d-flex align-items-center">
+                            Task
+                            <br>
+                            all task
+                        </div>
+                    </span>
+                    <div>
+                        {{numberOfTask}} records
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-auto">
+                    <div class="d-flex justify-content-end">
+                        <button mat-stroked-button class="addButton bg-color w-50" (click)="openDialog()">New
+                            Task</button>
+                        <button mat-stroked-button class="refreshButton bg-color w-50"
+                            (click)="getRecords()">Refresh</button>
+                    </div>
+                    <div class="d-flex justify-content-end my-1">
+                        <div class="input-group">
+                            <input type="text" class="form-control w-25" placeholder="Search"
+                                aria-label="Text input with checkbox" (keyup)="applyFilter($event)">
+                            <div class="input-group-text">
+                                <mat-icon>search</mat-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="table-container">
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+                <ng-container matColumnDef="select" sticky>
+                    <th mat-header-cell *matHeaderCellDef>
+                        <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                            [checked]="selection.hasValue() && isAllSelected()"
+                            [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+                        </mat-checkbox>
+                    </th>
+                    <td mat-cell *matCellDef="let row">
+                        <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)"
+                            [aria-label]="checkboxLabel(row)">
+                        </mat-checkbox>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="assignedTo">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Assigned To </th>
+                    <td mat-cell *matCellDef="let element"> {{element.assignedTo}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                    <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="DueDate">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Due Date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.dueDate | date:"dd/MM/yyyy"}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="priority">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Priority </th>
+                    <td mat-cell *matCellDef="let element"> {{element.priority}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="description">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Comment </th>
+                    <td mat-cell *matCellDef="let element"> {{ element.description.length > 15 ?
+                        (element.description.slice(0, 15) + '...') : element.description }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="d-flex gap-2" >
+                            <button mat-icon-button [matMenuTriggerFor]="menu"
+                                aria-label="Example icon-button with a menu" (click)="$event.stopPropagation()">
+                                <img src="../../../assets/image/Mediamodifier-Design.svg" alt="">
+                            </button>
+                            <mat-menu #menu="matMenu" class="bg-color">
+                                <button mat-menu-item (click)="openDialog(element)">
+                                    Edit
+                                </button>
+                                <button mat-menu-item (click)="deleteTask(element)">
+                                    Delete
+                                </button>
+                            </mat-menu>
+
+                        </div>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+                </tr>
+            </table>
+
+            <div class="w-100" *ngIf="!numberOfTask">
+                <div class="d-flex justify-content-center bg-white">
+                    <div >
+                        No records found
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+
+
+
+
+
+
+
+
+
+        <footer>
+            <mat-paginator class="paginator" id="pagination" [pageSizeOptions]="[5,10,15,20]" showFirstLastButtons
+                aria-label="Select page of users"></mat-paginator>
+        </footer>
+
+    </div>
+</div>

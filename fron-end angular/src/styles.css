@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%;overflow: hidden; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-mdc-dialog-surface{
+  overflow: inherit !important;
+}
+
+.mat-icon.mat-warn {
+  color: white;
+}
+.mat-mdc-form-field-focus-overlay{
+  background-color: transparent;
+}
+
+.mat-mdc-form-field-focus-overlay{
+    background-color: transparent !important;
+}
+
+
+.mat-mdc-icon-button{
+ --mat-mdc-button-persistent-rippl-color:transparent !important;
+ --mat-mdc-button-ripple-color:transparent !important;
+}
+
+.bg-color{
+    background-color: #fff3c5 !important;
+}
+
+.bg-color-cancel{
+    background-color: #b2b9c4 !important;
+}

@@ -1,0 +1,68 @@
+.header {
+  text-align: center;
+}
+
+hr {
+  border-top: 2px solid gray;
+}
+
+.actionFooter {
+  background-color: #ededed;
+}
+
+#dialog {
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: -37px;
+  right: -12px;
+  background-color: transparent;
+  z-index: 9999;
+  color: white;
+
+}
+
+.form-select {
+  --bs-form-select-bg-img: url('../../../assets/image/Mediamodifier-Design.svg');
+  background-size: 25px 25px;
+  padding: 8px;
+}
+
+::ng-deep #datePicker .mat-mdc-text-field-wrapper {
+  height: 40px;
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  ;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background: transparent;
+}
+
+.mat-mdc-text-field-wrapper:hover,
+.mat-mdc-text-field-wrapper:active {
+  background-color: transparent !important;
+}
+
+::ng-deep #datePicker .mat-mdc-form-field-flex {
+  /* height: 33px; */
+  height: 40px;
+}
+
+::ng-deep #datePicker .mat-mdc-form-field-subscript-wrapper,
+::ng-deep #datePicker .mdc-line-ripple {
+  display: none;
+}
+
+::ng-deep #datePicker .mat-mdc-form-field-infix {
+  padding: 5px 0px;
+}
+
+::ng-deep #datePicker .mat-mdc-form-field-infix input {
+  padding: 2px;
+}
+
+::ng-deep #datePicker .mat-mdc-icon-button {
+  --mat-mdc-button-persistent-rippl-color: transparent !important;
+  --mat-mdc-button-ripple-color: transparent !important;
+}
