@@ -32,7 +32,7 @@ Before you begin, ensure you have the following installed:
 
 ### Getting Started
  
-for execution:
+For execution:
 1) npm i (Install require node packages)
 2) mpn start (it will execute the program)
 
