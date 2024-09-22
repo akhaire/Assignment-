@@ -80,6 +80,13 @@ align-items: center;
   box-shadow: none;
   outline: none;
   border: 1px solid #ededed;
+  border-right:none;
+}
+.form-control{
+  border-right: none;
+}
+.input-group-text{
+  border-left: none;
 }
 
 .refreshButton,.addButton{
@@ -89,4 +96,8 @@ align-items: center;
 .bg-white{
   background-color: white;
   height: 40px;
+}
+
+a{
+  text-decoration: none;
 }
